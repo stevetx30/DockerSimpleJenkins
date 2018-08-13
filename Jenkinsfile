@@ -29,7 +29,9 @@ node {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
+
         docker.withRegistry("${env.projectRegistry}", "${env.loginid}") {
+		branch 'master' of https://github.com/stevetx30/DockerSimpleJenkins.git
             app.push("${env.BRANCH_NAME}-${env.BUILD_NUMBER}")
             app.push("${env.BRANCH_NAME}-latest")
         }
